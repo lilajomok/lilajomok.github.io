@@ -1,10 +1,10 @@
 # Site settings
-title: Blog
+title: Lila Jomok
 header-img: img/home-bg.jpg
 email: ylilajomok@gmail.com
 copyright_name: Lila Jomok
 # description: "Write your site description here. It will be used as your sites meta description as well!"
-baseurl: "/lilajomok.github.io/"
+# baseurl: "/lilajomok.github.io/"
 # url: "http://yourdomain.com"
 twitter_username: go9_t
 github_username:  lilajomok
