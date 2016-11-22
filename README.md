@@ -1,2 +1,11 @@
 # [lilajomok.github.io](https://lilajomok.github.io/)
-This repository contains files for [my user github page.](https://lilajomok.github.io/) Nothing much as of right now, but it will be updated!
+This repository contains files for [my user github page.](https://lilajomok.github.io/)
+
+Here's the directory of the site:
+
+| Page | Description |
+| --- | --- |
+|  [Blog](https://lilajomok.github.io/)   |   A blog about my projects and other topics. Currently set as the main page.  |
+| [About](https://lilajomok.github.io/about/) | About Me section. |
+| [Contact](https://lilajomok.github.io/contact/) | Contact page. |
+| [Projects](https://lilajomok.github.io/projects/) | Contains a list of ongoing and completed projects. |
