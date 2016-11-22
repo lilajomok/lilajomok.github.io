@@ -15,6 +15,5 @@ description: "List of my ongoing and completed projects.
         </h3>
         <p>Seasonal ARIMA modelling in R. </p>
     </div>
-    
 </div>
 <!-- /.row -->
