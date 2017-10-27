@@ -1,25 +1,37 @@
-# Site settings
-title: Lila Jomok
-header-img: img/home-bg.jpg
-email: lilajomok@gmail.com
-copyright_name: Lila-Joyce Jomok
-# description: "Write your site description here. It will be used as your sites meta description as well!"
-# baseurl: "/lilajomok.github.io/"
-# url: "http://yourdomain.com"
-twitter_username: rairaDraws
-github_username:  lilajomok
-# facebook_username:  StartBootstrap
-email_username:  lilajomok@gmail.com
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
 
-# Google Analytics
-# To enable google analytics, uncomment below line with a valid Google Tracking ID
-# google_tracking_id:
+# Setup
+title:            Lila Jomok
+tagline:          'Data Analyst'
+description:      'A blog'
+url:              https://lilajomok.github.io
+baseurl:          # the optional subpath of your site, e.g. "/blog"
+                  # NB: This applies to all pages in your Jekyll site.
+                  # If you want to move just the blog index pages but keep
+                  # other pages at root, see the paginate_path and
+                  # sidebar_blog_link below.
 
-# Build settings
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
-paginate: 5
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+author:
+  name:           'Lila Jomok'
+  url:            https://twitter.com/rairadraws
 
-gems: [jekyll-paginate, jekyll-feed]
+paginate:         5
+# paginate_path:    '/page:num'
+                    # Or '/blog/page:num' if you want to move your index pages
+
+plugins:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+
+# Custom vars
+#version:            3.4.1
+sidebar_home_link:  true
+# sidebar_blog_link:  '/blog'   # By default, your home page is your blog
+                                # page. If you change your paginate_path,
+                                # set this to the root of the paginate_path
+                                # to enable a separate blog link.
+github:              lilajomok
+#  repo:             https://github.com/fongandrew/hydeout
