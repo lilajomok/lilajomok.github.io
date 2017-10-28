@@ -3,9 +3,8 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            Lila Jomok
-tagline:          'Data Analyst'
-description:      'A blog'
+title:            Lila-Joyce Jomok
+description:     'Adventures in Data Science'
 url:              https://lilajomok.github.io
 baseurl:          # the optional subpath of your site, e.g. "/blog"
                   # NB: This applies to all pages in your Jekyll site.
