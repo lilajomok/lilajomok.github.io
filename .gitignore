@@ -3,6 +3,7 @@ _gh_pages
 _site
 .ruby-version
 .bundle
+vendor
 
 # Numerous always-ignore extensions
 *.diff
