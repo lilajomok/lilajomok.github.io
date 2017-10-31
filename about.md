@@ -1,6 +1,7 @@
 ---
 layout: page
-title: About Me
+title: About
+sidebar_link: true
 ---
 
 Hello and welcome! I'm **Lila Jomok**, a recent graduate currently living in Murrieta, CA and am working on data analysis projects. I'm interested to see how data can drive people's lives and how it can be put into good use. When I'm not doing data analyses, I like to [draw and create comics](http://goninety.tumblr.com/) as well listen to podcasts and stay in touch with sports.
