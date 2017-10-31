@@ -2,10 +2,16 @@
 layout: page
 title: "Time Series Analysis of RTA Boardings, Route 16 (2008-2015)"
 categories: Projects
-tags: R, time series
+tags: [R, time series]
 ---
 
 _This is a condensed version of an undergrad project for my Time Series analysis class at UCR. Files can be found at the [rta-routes](https://github.com/lilajomok/rta-routes) repository on GitHub._
+
+Table of Contents
+=================
+{:.no_toc}
+* TOC
+{:toc}
 
 Data
 ====
