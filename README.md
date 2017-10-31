@@ -7,5 +7,4 @@ Here's the directory of the site:
 | --- | --- |
 |  [Blog](https://lilajomok.github.io/)   |   A blog about my projects and other topics. Currently set as the main page.  |
 | [About](https://lilajomok.github.io/about/) | About Me section. |
-| [Contact](https://lilajomok.github.io/contact/) | Contact page. |
-| [Projects](https://lilajomok.github.io/projects/) | Contains a list of ongoing and completed projects. |
+| [Projects](https://lilajomok.github.io/category/projects/) | Contains a list of ongoing and completed projects. |
