@@ -5,7 +5,9 @@ categories: Projects
 tags: [R, logistic regression]
 ---
 
-*In addition to refreshing data analysis skills, our goal is to build a statistical model to predict if a blood donor will donate within a given time window, which is March 2007.*
+In addition to refreshing data analysis skills, our goal is to build a statistical model to predict if a blood donor will donate within a given time window, which is March 2007.
+
+The Rmarkdown document can be found at the [project repository](https://github.com/lilajomok/blood-donations).
 
 Table of Contents
 =================
