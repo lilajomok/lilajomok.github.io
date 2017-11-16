@@ -129,10 +129,10 @@ head(testData)
     ## 5  83         4           12   3000         34
     ## 6 500         3           21   5250         42
 
+Since the explanatory variable `madeDonation` results in two outcomes (either the donor donates in March 2007 or not), we consider building a **logistic regression model** for our data. However, before we proceed to building the model, we'll perform some EDA (Exploratory Data Analysis) to find more about our data.
+
 Exploratory Data Analysis
 =========================
-
-Since we are interested in whether the donor will donate again in March 2007, there are two possible outcomes: either they donate or do not donate. A logistic regression model is suitable for this, but we will first do some exploratory data analysis. Having a visual idea of the data will help us see if we need to do some transformations and see possible problems with our dataset.
 
 First, we need to make the binary factor `madeDonation` is read as a categorical variable. Otherwise, the `0` and `1` values will be read as continuous variables instead of two groups.
 
@@ -185,9 +185,7 @@ plot04 <- ggplot(data = trainingData) + geom_boxplot(aes(x = madeDonation, y = m
 grid.arrange(plot01, plot02, plot03, plot04, ncol = 2)
 ```
 
-![]({{site.baseurl}}/assets/img/blood-donations-data-analysis_files/figure-markdown_github/unnamed-chunk-5-1.png)
-
-`numDonations` and `totVol` look similar, which makes sense - the total amount of blood donated *should* increase as the number of donations increase. We can see this by looking at their correlation:
+![]({{site.baseurl}}/assets/img/blood-donations-data-analysis_files/figure-markdown_github/unnamed-chunk-5-1.png) `numDonations` and `totVol` look similar, which makes sense - the total amount of blood donated *should* increase as the number of donations increase. We can see this by looking at their correlation:
 
 ``` r
 TDselect <- select(trainingData, mosLastDo, numDonations, totVol, mosFirstDo)
@@ -206,9 +204,9 @@ Both `numDonations` and `totVol` have a correlation of `1.00`. Hence, we can lea
 Feature Engineering
 -------------------
 
-If we create a new variable that takes the average of each donation (`totVol` / `numDonations`), each observation will be the same - 250 cubic centimeters. However, the number of donations varies among the donors, so we will create a variable `donFreq` which is the length of time between a donor's first and last donation divided by the total number of donations.
+If we create a new variable that takes the average of each donation (`totVol` / `numDonations`), each observation will be the same (250 cubic centimeters). However, the number of donations varies among the donors, so we will create a variable involving `mosFirstDo` and `mosLastDo`. We get `donFreq`, which is the length of time between a donor's first and last donation divided by the total number of donations.
 
-We can also create a new binary variable `firstTime` to indicate which donors are donating for the first time.
+Some donors have the same values for `mosFirstDo` and `mosLastDo`, indicating that they are first-time donors. We can create a new binary variable `firstTime` to indicate first-time donors and see if there is a significant effect.
 
 ``` r
 TD2 <- mutate(trainingData, donFreq = (mosFirstDo - mosLastDo) / numDonations)
@@ -273,7 +271,7 @@ summary(model01)
 At the significance level of alpha = 0.05, `mosLastDo` and `firstTime` are statistically significant.
 
 -   For every unit change in `mosLastDo`, the log odds of donating in March 2007 reduces by `0.09708`.
--   If the donor is a NOT first-time donor (`firstTime1`), the log odds of donating in March 2007 changes by `1.29274`.
+-   If the donor is NOT a first-time donor (`firstTime1`), the log odds of donating in March 2007 changes by `1.29274`.
 
 Wald test for `firstTime`
 -------------------------
@@ -387,12 +385,11 @@ head(testData2)
     ## 5  83         4           12   3000         34 2.500000         1
     ## 6 500         3           21   5250         42 1.857143         1
 
-We will create a new data frame `donateP` to store our predicted probabilities in.
+We will create a new data frame `newDF` to store our predicted probabilities in a new column `donateP`.
 
 ``` r
 # Create a base DF to be used in predictions
 newDF <- with(testData2, data.frame(ID = ID, mosLastDo = mosLastDo, numDonations = numDonations,  mosFirstDo = mosFirstDo, donFreq = donFreq, firstTime = factor(firstTime)))
-# head(newDF)
 
 newDF$donateP <- predict(model01, newdata = newDF, type="response")
 head(newDF)
@@ -409,7 +406,7 @@ head(newDF)
 Submission
 ----------
 
-After predictions, we will then use `dplyr` to create another data frame for our submission, which only includes the donor's `ID` and the predicted probability.
+After predictions, we will then use `select()` from the `dplyr` package to create another data frame for our submission, which only includes the donor's `ID` and the predicted probability. The columns in `submissionData` are then renamed to the proper names for the submission format.
 
 ``` r
 submissionData <- select(newDF, ID, donateP)
