@@ -1,0 +1,48 @@
+---
+layout: page
+title: Tags
+---
+
+<section>
+    {% assign rawtags = "" %}
+    {% for post in site.posts %}
+        {% assign ttags = post.tags | join:'|' | append:'|' %}
+        {% assign rawtags = rawtags | append:ttags %}
+    {% endfor %}
+    {% assign rawtags = rawtags | split:'|' | sort %}
+
+    {% assign tags = "" %}
+    {% for tag in rawtags %}
+        {% if tag != "" %}
+            {% if tags == "" %}
+                {% assign tags = tag | split:'|' %}
+            {% endif %}
+            {% unless tags contains tag %}
+                {% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %}
+            {% endunless %}
+        {% endif %}
+    {% endfor %}
+
+    {% for tag in tags %}
+        <a href="#{{ tag | slugify }}"class="button small"> {{ tag }} </a>
+    {% endfor %}
+</section>
+<hr>
+<section>
+    {% for tag in tags %}
+    <h2 id="{{ tag | slugify }}" class="post-title">{{ tag }}</h2>
+    <ul>
+        {% for post in site.posts %}
+            {% if post.tags contains tag %}
+            <li>
+            <a href="{{ post.url }}">
+            <p class="post-title">
+                    <strong class ="list-item">{{ post.title }}</strong></a>
+                     <small class="date">{{ post.date | date_to_string }}</small>
+            </p>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</section>

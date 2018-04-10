@@ -1,16 +1,40 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	{% include head.html %}
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-  {% include head.html %}
+				<!-- Header -->
+					{% include header.html %}
 
-  <body class="{{ page.layout }}{% if page.url == '/' %} home{% endif %}">
+				<!-- Menu -->
+					{% include nav.html %}
 
-    {% include sidebar.html %}
+				<!-- Main -->
+					{% include main.html %}
 
-    <main class="container">
-      {{ content }}
-    </main>
+				<!-- Footer -->
+					{% include footer.html %}
 
-    {% include custom-foot.html %}
-  </body>
+			</div>
+
+		<!-- Scripts -->
+			<script src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
+			<script src="{{site.baseurl}}/assets/js/skel.min.js"></script>
+			<script src="{{site.baseurl}}/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{{site.baseurl}}/assets/js/main.js"></script>
+			
+
+			{% if site.google_analytics_ID %}
+				{% include googleAnalytics.html %}
+			{% endif %}
+
+	</body>
 </html>

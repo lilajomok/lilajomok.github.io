@@ -1,0 +1,135 @@
+@import url(main.css)
+
+/* Blog Posts */
+
+.post-title {
+	margin-bottom: 0;
+}
+
+.post-title {
+  margin: 0 0 0.5em 0;
+}
+
+.post-list {
+	font-size: 0.75em;
+	margin: 0 0 2em 0;
+	text-transform: uppercase;
+}
+
+.post-tags {
+	font-weight: 700;
+	font-size: 0.75em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.list-item {
+	font-size: 1.1em;
+	text-transform: none;
+	font-weight: 700;
+}
+
+.date {
+	font-weight: 400;
+	font-size: .8em;
+	letter-spacing: 0;
+	margin: 0 0 0 0.25em;
+}
+
+/* Nav buttons to Font Awesome */
+#header nav ul li a[href="#menu"] {
+  position: relative;
+}
+
+#header nav ul li a[href="#menu"]:before {
+  background: none;
+  content: "\f0c9";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2em;
+  text-decoration: inherit;
+  left: -1.1em;
+  top: 0;
+	opacity: 0;
+}
+
+#header nav ul li a[href="#menu"]:after {
+	background: none;
+  content: "\f0c9";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2em;
+  text-decoration: inherit;
+  left: -1.1em;
+  top: 0;
+	opacity: 1;
+}
+
+#header nav ul li a[href="#menu"]:hover:before {
+	opacity: 1;
+}
+
+#header nav ul li a[href="#menu"]:hover:after {
+	opacity: 1;
+}
+
+#menu > .close {
+  position: relative;
+}
+
+#menu > .close:before {
+  background: none;
+  content: "\f00d";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2em;
+  text-decoration: inherit;
+  left: -1.1em;
+  top: 0;
+	opacity: 0;
+}
+
+#menu > .close:after {
+	background: none;
+  content: "\f00d";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2em;
+  text-decoration: inherit;
+  left: -1.1em;
+  top: 0;
+	opacity: 1;
+}
+
+#menu > .close:hover:before {
+	opacity: 1;
+}
+
+#menu > .close:hover:after {
+	opacity: 0;
+}
+
+/* Nav secondary lists */
+
+#menu > .inner > ul ul {
+  list-style: none;
+  font-size: 85%;
+  line-height: 85%;
+  padding: 0;
+  margin: -1em 0 0 1.2em;
+}
+
+#menu > .inner > ul ul > li {
+  padding: 0;
+}
+
+#menu > .inner > ul ul > li a {
+  display: block;
+  padding: .75em 0;
+  border: 0;
+  color: inherit;
+}
