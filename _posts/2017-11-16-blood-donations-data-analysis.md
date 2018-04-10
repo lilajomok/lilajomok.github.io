@@ -3,6 +3,7 @@ layout: page
 title: "Predicting Future Blood Donations in R"
 categories: Projects
 tags: [R, logistic regression]
+img: /images/blog-img/blood-donations-data-analysis_files/figure-markdown_github
 ---
 
 In addition to refreshing data analysis skills, our goal is to build a statistical model to predict if a blood donor will donate within a given time window, which is March 2007.
@@ -185,7 +186,7 @@ plot04 <- ggplot(data = trainingData) + geom_boxplot(aes(x = madeDonation, y = m
 grid.arrange(plot01, plot02, plot03, plot04, ncol = 2)
 ```
 
-![]({{site.baseurl}}/assets/img/blood-donations-data-analysis_files/figure-markdown_github/unnamed-chunk-5-1.png) `numDonations` and `totVol` look similar, which makes sense - the total amount of blood donated *should* increase as the number of donations increase. We can see this by looking at their correlation:
+![]({{ page.img }}/unnamed-chunk-5-1.png) `numDonations` and `totVol` look similar, which makes sense - the total amount of blood donated *should* increase as the number of donations increase. We can see this by looking at their correlation:
 
 ``` r
 TDselect <- select(trainingData, mosLastDo, numDonations, totVol, mosFirstDo)

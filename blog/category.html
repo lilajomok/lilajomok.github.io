@@ -1,0 +1,47 @@
+---
+title: Categories
+layout: page
+---
+
+<section>
+    {% assign rawcategories = "" %}
+    {% for post in site.posts %}
+        {% assign tcategories = post.categories | join:'|' | append:'|' %}
+        {% assign rawcategories = rawcategories | append:tcategories %}
+    {% endfor %}
+    {% assign rawcategories = rawcategories | split:'|' | sort %}
+
+    {% assign categories = "" %}
+    {% for category in rawcategories %}
+        {% if category != "" %}
+            {% if categories == "" %}
+                {% assign categories = category | split:'|' %}
+            {% endif %}
+            {% unless categories contains category %}
+                {% assign categories = categories | join:'|' | append:'|' | append:category | split:'|' %}
+            {% endunless %}
+        {% endif %}
+    {% endfor %}
+    {% for category in categories %}
+        <a href="#{{ category | slugify }}"class="button small"> {{ category }} </a>
+    {% endfor %}
+</section>
+<hr>
+<section>
+    {% for category in categories %}
+    <h2 id="{{ category | slugify }}" class="post-title">{{ category }}</h2>
+    <ul>
+        {% for post in site.posts %}
+            {% if post.categories contains category %}
+            <li>
+                <a href="{{ post.url }}">
+                    <p class="post-title">
+                        <strong class ="list-item">{{ post.title }}</strong></a>
+                        <small class="date">{{ post.date | date_to_string }}</small>
+                    </p>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</section>

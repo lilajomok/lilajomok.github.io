@@ -1,0 +1,81 @@
+<ul class="icons">
+    {% if site.linkedin %}
+    <li>
+        <a href="https://linkedin.com/in/{{ site.linkedin }}" class="icon style2 fab fa-linkedin">
+            <span class="label">LinkedIn</span>
+        </a>
+    </li>
+    {% endif %}
+    {% if site.gh %}
+    <li>
+        <a href="https://github.com/{{ site.gh }}" class="icon style2 fa-github"><span class="label">GitHub</span></a>
+    </li>
+    {% endif %}
+    {% if site.twitter %}
+        <li>
+            <a href="https://twitter.com/{{ site.twitter }}" class="icon style2 fa-twitter">
+                <span class="label">Twitter</span>
+            </a>
+        </li>
+    {% endif %}
+    {% if site.facebook_url %}                    
+        <li>
+            <a href="{{ site.facebook_url }}" class="icon style2 fa-facebook"><span class="label">Facebook</span></a>
+        </li>
+    {% endif %}
+    {% if site.instagram %}
+        <li>
+            <a href="https://www.instagram.com/{{ site.instagram}}" class="icon style2 fa-instagram"><span class="label">Instagram</span></a>
+        </li>
+    {% endif %}
+    {% if site.snapchat %}
+        <li>
+            <a href="https://www.snapchat.com/add/{{ site.snapchat }}" class="icon style2 fa-snapchat-ghost"><span class="label">Snapchat</span></a>
+        </li>
+    {% endif %}
+    {% if site.dribble %}
+        <li>
+            <a href="http://dribble.com/{{ site.dribble}}" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a>
+        </li>
+    {% endif %}
+    {% if site.500px %}
+        <li>
+            <a href="https://500px.com/{{ site.500px }}" class="icon style2 fa-500px"><span class="label">500px</span></a>
+        </li>
+    {% endif %}
+    {% if site.tumblr %}
+        <li>
+            <a href="http://{{ site.tumblr }}.tumblr.com/" class="icon style2 fa-tumblr"><span class="label">Tumblr</span></a>
+        </li>
+    {% endif %}
+    {% if site.deviantart %}
+        <li>
+            <a href="http://{{ site.deviantart }}.deviantart.com/" class="icon style2 fa-deviantart"><span class="label">deviantART</span></a>
+        </li>
+    {% endif %}
+    {% if site.spotify %}
+        <li>
+            <a href="http://open.spotify.com/{{ site.spotify }}" class="icon style2 fa-spotify"><span class="label">Spotify</span></a>
+        </li>
+    {% endif %}
+    {% if site.youtube_url %}
+        <li>
+            <a href="{{ site.youtube_url }}" class="icon style2 fab fa-youtube"><span class="label">YouTube</span></a>
+        </li>
+    {% endif %}
+    {% if site.pinterest %}
+        <li>
+            <a href="http://pinterest.com/{{ site.pinterest }}" class="icon style2 fa-pinterest"><span class="label">Pinterest</span></a>
+        </li>
+    {% endif %}
+    {% if site.phone %}
+        <li>
+            <a href="tel:+1{{ site.phone }}" class="icon style2 fa-phone"><span class="label">Phone</span></a>
+        </li>
+    {% endif %}
+    {% if site.email %}
+        <li>
+            <a href="mailto:{{ site.email }}" class="icon style2 fa-envelope-o"><span class="label">Email</span></a>
+        </li>
+    {% endif %}
+</ul>

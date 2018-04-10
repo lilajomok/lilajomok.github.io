@@ -1,0 +1,18 @@
+menu_title: Menu
+links:
+
+- title: Home
+  url: /
+
+- title: About
+  url: /about
+
+- title: Blog
+  url: /blog
+  subfolderitems:
+    - page: Archive
+      url: /blog/archive
+    - page: Tags
+      url: /blog/tag
+
+

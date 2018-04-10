@@ -1,18 +1,45 @@
 ---
 layout: default
+comments: true
 ---
 
 <header>
-  <h1 class="post-title">{{ page.title }}</h1>
+    <strong class="post-title">{{ page.title }}</strong>
+    <h4 class="post-list">
+        {{ page.date | date: '%-B %-d, %Y'}}
+        {% if page.categories.size > 0%}&middot; {% endif %}
+        {% for tag in page.tags %}
+            <a href="{{ site.baseurl }}/blog/tag/#{{tag}}">{{ tag }}</a>
+            {% unless forloop.last %},{% endunless %}  
+        {% endfor %}
+    </h4>
 </header>
-<div class="content">
-  {% include post-meta.html post=page %}
+{% if page.image %}
+<span class="image fit">
+    <img src="{{ page.image }}" alt="{{ page.title }}" title="{{ page.title }}">
+</span>
+{% endif%}
+{{ content }}
 
-  <div class="post-body">
-    {{ content }}
-    {% include post-tags.html post=page %}
-  </div>
+<!-- Comments -->
+{% if page.comments %}
+    <h2>Comments</h2>
+    {% include disqus.html %}
+{% endif %}
 
-  {% include comments.html %}
-  {% include related_posts.html %}
-</div>
+
+<!-- <section>
+    <ul class="actions fit">
+        {% if page.previous.url %}
+           <li> <a href="{{ page.previous.url }}" class="button fit small">&laquo; Previous: {{ page.previous.title }}</a></li>
+        {% endif %}
+        {% if page.next.url %}
+           <li> <a href="{{ page.next.url }}" class="button fit small">Next: {{ page.next.title }} &raquo;</a></li>
+        {% endif %}
+    </ul>
+</section> -->
+
+<!-- {% for category in page.categories %}
+    <a href="{{ site.baseurl }}/blog/category/#{{category}}">{{ category }}</a>
+    {% unless forloop.last %},{% endunless %}  
+{% endfor %} -->
