@@ -1,0 +1,29 @@
+<section>
+    <div class="row">
+        <!-- Interests -->
+        <div class="6u 12u$(medium)">
+            <h3>Interests</h3>
+            <ul>
+            {% for item in site.data.interests.interests %}
+                <li>
+                    {{ item.title }}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="6u 12u$(medium)">
+            <h3>Education</h3>
+            <ul>
+            {% for item in site.data.interests.studies %}
+                <li>
+                    <strong>{{ item.degree }}, {{ item.year }}</strong>
+                    <br>
+                    <em><small>{{ item.university }}</small></em>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

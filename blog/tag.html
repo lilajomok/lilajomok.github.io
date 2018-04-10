@@ -30,15 +30,16 @@ title: Tags
 <hr>
 <section>
     {% for tag in tags %}
-    <h2 id="{{ tag | slugify }}" class="post-title">{{ tag }}</h2>
+    <br>
+    <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
     <ul>
         {% for post in site.posts %}
             {% if post.tags contains tag %}
             <li>
             <a href="{{ post.url }}">
-            <p class="post-title">
-                    <strong class ="list-item">{{ post.title }}</strong></a>
-                     <small class="date">{{ post.date | date_to_string }}</small>
+            <p>
+                <strong>{{ post.title }}</strong></a>
+                <small class="date">{{ post.date | date_to_string }}</small>
             </p>
             </li>
             {% endif %}

@@ -1,10 +1,14 @@
-<h2>Follow</h2>
 <ul class="icons">
     {% if site.linkedin %}
     <li>
         <a href="https://linkedin.com/in/{{ site.linkedin }}" class="icon style2 fab fa-linkedin">
             <span class="label">LinkedIn</span>
         </a>
+    </li>
+    {% endif %}
+    {% if site.gh %}
+    <li>
+        <a href="https://github.com/{{ site.gh }}" class="icon style2 fa-github"><span class="label">GitHub</span></a>
     </li>
     {% endif %}
     {% if site.twitter %}
@@ -32,11 +36,6 @@
     {% if site.dribble %}
         <li>
             <a href="http://dribble.com/{{ site.dribble}}" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a>
-        </li>
-    {% endif %}
-    {% if site.gh %}
-        <li>
-            <a href="https://github.com/{{ site.gh }}" class="icon style2 fa-github"><span class="label">GitHub</span></a>
         </li>
     {% endif %}
     {% if site.500px %}

@@ -1,4 +1,4 @@
-{% for item in site.data.portfolio.sections %}
+<!-- {% for item in site.data.portfolio.sections %}
 <section class="special">
     <h2>{{ item.category }}</h2>
 </section>
@@ -17,4 +17,35 @@
     </article>
     {% endfor %}
 </section>
-{% endfor %}
+{% endfor %} -->
+
+<!-- Lists (Alternative to Tiles) -->
+<section>
+    {% for item in site.data.portfolio.sections %}
+    <h2>{{ item.category }}</h2>
+    {% for entry in item.projects %}
+    <div class="row">
+        <div class="3u uniform">
+            {% if entry.img %}
+            <span class="image fit">
+                <img src="{{ entry.img }}" alt="{{ entry.title }}">
+            </span>
+            {% endif %}
+        </div>
+            <div class="9u uniform">
+                <ul class="alt">
+            <li>
+                <a href="{{ entry.url }}">
+                    <strong class="post-title">{{ entry.title }}</strong>
+                </a>
+                <p>{{ entry.description }}</p>
+                {% if entry.gh-repo %}
+                    <a href="{{ entry.gh-repo }}" class="button small"><strong>Github</strong></a>
+                {% endif %}
+            </li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+</section>

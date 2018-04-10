@@ -3,6 +3,7 @@ layout: page
 title: "Time Series Analysis of RTA Boardings, Route 16 (2008-2015)"
 categories: Projects
 tags: [R, time series]
+img: /images/blog-img/11-20-2016-rta-routes_files/figure-markdown_github
 ---
 
 _This is a condensed version of an undergrad project for my Time Series analysis class at UCR. Files can be found at the [rta-routes](https://github.com/lilajomok/rta-routes) repository on GitHub._
@@ -34,7 +35,7 @@ Although there are many bus routes, we are interested in Route 16 mainly due to 
   plot(route.16, ylab="Number of Riders", xlab="Year", main="Riders Per Month - Route 16",type="o")
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![]({{ page.img }}/unnamed-chunk-2-1.png)
 
 The time series plot suggest we can apply a seasonal model since there is a pattern. It also shows that there is an increasing trend over time, especially between years 2008-2013.
 
@@ -64,7 +65,7 @@ Below is the plot of the transformed data:
   plot(sqrt(route.16.window),ylab="Passengers",xlab="Years",main="Squareroot transformation of Riders per month line 16")
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![]({{ page.img }}/unnamed-chunk-4-1.png)
 
 Differentiation
 ---------------
@@ -76,7 +77,7 @@ The plot of the transformed data still shows stationarity, so we plot the **firs
   plot(diff(sqrt(route.16.window),xlab="Years",ylab="First difference", main="First degree difference of the sqrt transformation"))
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![]({{ page.img }}/unnamed-chunk-5-1.png)
 
 The **Augmented Dickey-Fuller Test** verifies the stationarity of the differentiated data with a p-value of 0.01. This value is sufficient to sustain the hypothesis that our data is stationary with a signficance level of *α* = 0.05.
 
@@ -99,7 +100,7 @@ We can now proceed to find the appropriate ARMA(p,q) model by using the sample A
   acf(as.vector(diff(sqrt(route.16.window),lag=12)))
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![]({{ page.img }}/unnamed-chunk-7-1.png)
 
 The **Sample ACF** resembles one of a seasonal MA(1) - it spikes at lag *k* = 1 and then drops below the margin of error. The **Sample PACF** also has a similar output.
 
@@ -108,7 +109,7 @@ The **Sample ACF** resembles one of a seasonal MA(1) - it spikes at lag *k* =�
   pacf(as.vector(diff(sqrt(route.16.window),lag=12)))
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![]({{ page.img }}/unnamed-chunk-8-1.png)
 
 Both figures suggest that an ARIMA(1,1,1) model is most suitable for our data. To confirm this, we can also look at the **EACF**:
 
@@ -252,7 +253,7 @@ Non-Seasonal Models
   qqline(rstandard(ari11.ns.fit), main="")
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-14-1.png)
+![]({{ page.img }}/unnamed-chunk-14-1.png)
 
 ### Normality and Independence
 
@@ -329,7 +330,7 @@ Non-Seasonal Models
   pacf(rstandard(ari11.ns.fit), main="Sample PACF")  
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-16-1.png)
+![]({{ page.img }}/unnamed-chunk-16-1.png)
 
 ### Overfitting
 
@@ -344,7 +345,7 @@ Non-Seasonal Models
   qqline(rstandard(arima111.ns.fit), main="")
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-17-1.png)
+![]({{ page.img }}/unnamed-chunk-17-1.png)
 
 ``` r
   # Residual ACF / PACF
@@ -353,7 +354,7 @@ Non-Seasonal Models
   pacf(rstandard(arima111.ns.fit), main="Sample PACF")
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-17-2.png)
+![]({{ page.img }}/unnamed-chunk-17-2.png)
 
 ------------------------------------------------------------------------
 
@@ -371,7 +372,7 @@ Seasonal Models
   qqline(rstandard(ari11.fit), main="")
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-18-1.png)
+![]({{ page.img }}/unnamed-chunk-18-1.png)
 
 ### Normality and Independence
 
@@ -448,7 +449,7 @@ Seasonal Models
   pacf(rstandard(ari11.fit), main="Sample PACF")  
 ```
 
-![]({{site.baseurl}}/assets/img/11-20-2016-rta-routes_files/figure-markdown_github/unnamed-chunk-20-1.png)
+![]({{ page.img }}/unnamed-chunk-20-1.png)
 
 ------------------------------------------------------------------------
 

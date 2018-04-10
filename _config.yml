@@ -1,43 +1,41 @@
 # Dependencies
-markdown:         kramdown
-highlighter:      rouge
+markdown:                 kramdown
+highlighter:              rouge
+
+# CSS Styles
+sass:
+  # sass_dir: ./assets/css
+  # style: compressed
 
 # Setup
-title:            Lila-Joyce Jomok
-description:     'Adventures in Data Science'
-url:              https://lilajomok.github.io
-baseurl:          # the optional subpath of your site, e.g. "/blog"
-                  # NB: This applies to all pages in your Jekyll site.
-                  # If you want to move just the blog index pages but keep
-                  # other pages at root, see the paginate_path and
-                  # sidebar_blog_link below.
+title:                    Lila-Joyce Jomok
+description:              'Data Analyst | Developer'
+copyright:                Lila-Joyce Jomok
+#logo_url:                 /images/logo.svg
+#favicon:                 something.ico 
 
-author:
-  name:           'Lila Jomok'
-  url:            https://twitter.com/rairadraws
+# Social Media
+linkedin:        lilajomok
+twitter:         rairaDraws
+# facebook_url:    user 
+# instagram:       user
+# snapchat:        user
+# dribble:         user
+gh:              lilajomok
+# 500px:           user
+# tumblr:          user
+# deviantart:      user
+# spotify:         user
+# youtube_url:     url
+# pinterest:       user
 
-paginate:         5
-# paginate_path:    '/page:num'
-                    # Or '/blog/page:num' if you want to move your index pages
+# Contact
+#phone:                +12345678912
+email:               lilajomok@gmail.com  
 
-plugins:
-  - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
+# Google Analytics
+google_analytics_ID:  UA-108829050-1
 
-exclude: ["vendor"]
-
-# Custom vars
-#version:            3.4.1
-sidebar_home_link:  true
-# sidebar_blog_link:  '/blog'   # By default, your home page is your blog
-                                # page. If you change your paginate_path,
-                                # set this to the root of the paginate_path
-                                # to enable a separate blog link.
-github:
-#  repo:             https://github.com/fongandrew/hydeout
-
+# Disqus
 disqus:
-   shortname: lilajomok-blog
-
-google_analytics: UA-108829050-1
+  - shortname: lilajomok-blog

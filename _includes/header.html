@@ -2,7 +2,10 @@
     <div class="inner">
         <!-- Logo -->
             <a href="{{ site.baseurl }}/" class="logo">
-                <span class="symbol"><img src="{{ site.logo_url}}" alt="" /></span><span class="title">{{ site.title }}</span>
+                {% if site.logo_url %}
+                <span class="symbol"><img src="{{ site.logo_url}}" alt="" /></span>
+                {% endif %}
+                <span class="title">{{ site.title }}</span>
             </a>
 
         <!-- Nav -->

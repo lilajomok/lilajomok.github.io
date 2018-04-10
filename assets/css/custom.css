@@ -1,13 +1,14 @@
-@import url(main.css)
+@import url(main.css);
 
 /* Blog Posts */
 
-.post-title {
-	margin-bottom: 0;
+
+.custom {
+	margin-bottom: 0.5em;
 }
 
 .post-title {
-  margin: 0 0 0.5em 0;
+  font-size: 1.5em;
 }
 
 .post-list {
@@ -132,4 +133,27 @@
   padding: .75em 0;
   border: 0;
   color: inherit;
+}
+
+/* Footer */
+#footer {
+  background: var(--primary);
+  color: white;
+}
+
+#footer > .inner section:nth-child(1) {
+  width: 100%;
+  margin-right: 0;
+}
+
+.copyright li {
+  color: white;
+}
+
+/* Wrapper */
+#wrapper > * > .inner {
+  width: 100%;
+  max-width: 60em;
+  margin: 0 auto;
+  padding: 0 2.5em;
 }
