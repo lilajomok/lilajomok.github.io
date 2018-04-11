@@ -39,14 +39,14 @@
       | truncate: 200 }}">
 {% endif %}
 {% if page.image %}
-  <meta name="twitter:image:src" content="{{ site.url }}/path/to/image/{{ page.image }}">
+  <meta name="twitter:image:src" content="{{ site.baseurl }}/{{ page.image }}">
 {% else %}
-  <meta name="twitter:image:src" content="{{ site.url }}/path/to/image/profile-pic.png">
+  <meta name="twitter:image:src" content="{{ site.baseurl }}/path/to/image/profile-pic.png">
 {% endif %}
 {% if page.image.thumb %}
   <meta name="twitter:image"
     content="{{ site.urlimg }}/{{ page.image.thumb }}">
 {% else %}
   <meta name="twitter:image"
-    content="{{ site.urlimg }}/path/to/cover.png">
+    content="{{ site.baseurl }}/path/to/image/profile-pic.png">
 {% endif %}
