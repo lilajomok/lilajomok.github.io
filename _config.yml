@@ -18,7 +18,7 @@ permalink:                /blog/:year-:month-:day/:title
 # Meta
 author:                Lila-Joyce Jomok
 general:
-  image:               '{{site.baseurl}}/images/pic01.jpg' 
+  image:               /images/pic01.jpg
 
 # Social Media
 linkedin:        lilajomok
