@@ -20,11 +20,33 @@
 
 <!-- Twitter Card -->
 
-<meta name="twitter:card" content="summary_large_image" />
-<!-- You, you're the creator. -->
-<meta name="twitter:creator" content="@{{ site.twitter }}" />
-<!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title}}{% endif %}">
-<meta name="twitter:site" content="@{{site.twitter}}" />
-<meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-<meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ site.general.image}}{% endif %}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ site.twitter }}">
+{% if page.title %}
+  <meta name="twitter:title" content="{{ page.title }}">
+{% else %}
+  <meta name="twitter:title" content="{{ site.title }}">
+{% endif %}
+{% if page.url %}
+  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+{% endif %}
+{% if page.description %}
+  <meta name="twitter:description"
+    content="{{ page.meta_description }}">
+{% else %}
+  <meta name="twitter:description"
+    content="{{ page.content | strip_html | xml_escape
+      | truncate: 200 }}">
+{% endif %}
+{% if page.image %}
+  <meta name="twitter:image:src" content="{{ site.url }}/path/to/image/{{ page.image }}">
+{% else %}
+  <meta name="twitter:image:src" content="{{ site.url }}/path/to/image/profile-pic.png">
+{% endif %}
+{% if page.image.thumb %}
+  <meta name="twitter:image"
+    content="{{ site.urlimg }}/{{ page.image.thumb }}">
+{% else %}
+  <meta name="twitter:image"
+    content="{{ site.urlimg }}/path/to/cover.png">
+{% endif %}
