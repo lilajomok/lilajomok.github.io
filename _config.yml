@@ -39,4 +39,4 @@ google_analytics_ID:  UA-108829050-1
 
 # Disqus
 disqus:
-  - shortname: lilajomok-blog
+  shortname: 'lilajomok-blog'

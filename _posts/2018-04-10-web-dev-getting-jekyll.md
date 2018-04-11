@@ -7,6 +7,7 @@ categories:
 - Adventures Into Web Development
 tags: [jekyll, web dev]
 image: /images/blog-img/geometric-pattern-bg.jpg
+comments: true
 ---
 
 Recently I started getting to web development. While I'm no expert yet, it's been interesting learning and reviewing the basics of creating web sites. I've always enjoyed making and customizing web pages ever since high school. To help me get on a good start, I bough access to a popular web dev course on Udemy - [**The Web Developer Bootcamp**](https://www.udemy.com/the-web-developer-bootcamp/learn/v4/overview) by Colt Steele - during one of Udemy's frequent sales.

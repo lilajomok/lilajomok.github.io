@@ -3,6 +3,7 @@ layout:     post
 title:      "Quick Update"
 subtitle:   "A short update regarding this site."
 date:       2017-10-31
+comments: true
 ---
 
 Long time, no see! A new theme has been installed to the site and a bunch of files have been rearranged. It took a while to reorganize everything - my first attempt last year left this site in a mess. However, everything has clicked for me now. Here are some of the changes:
