@@ -12,7 +12,7 @@ comments: true
             <a href="{{ site.baseurl }}/blog/tag/#{{tag}}">{{ tag }}</a>
             {% unless forloop.last %},{% endunless %}  
         {% endfor %}
-        {% if page.comments %}&middot; <a href="#disqus_thread">Comments</a> {% endif %}
+        {% if page.comments %}&middot; <a href="{{ page.url }}#disqus_thread">Comments</a> {% endif %}
     </h4>
 </header>
 {% if page.image %}
