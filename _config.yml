@@ -11,6 +11,7 @@ sass:
 title:                    Lila-Joyce Jomok
 description:              'Data Analyst | Developer'
 copyright:                Lila-Joyce Jomok
+permalink:                /blog/:year-:month-:day/:title
 #logo_url:                 /images/logo.svg
 #favicon:                 something.ico 
 
