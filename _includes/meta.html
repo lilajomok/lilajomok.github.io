@@ -19,7 +19,12 @@
 <meta property="og:image" content="{{ site.general.image }}">
 
 <!-- Twitter Card -->
+
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@{{ site.twitter }}" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="{% if page.title%}{{ page.title }}{% else %}{{ site.title}}{% endif %}">
 <meta name="twitter:site" content="@{{site.twitter}}" />
 <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-<meta name="twitter:title" content="{% if page.title%}{{ page.title }}{% else %}{{ site.data.general.title}}{% endif %}">
-<meta name="twitter:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.data.general.image}}{% endif %}">
+<meta name="twitter:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.general.image}}{% endif %}">
