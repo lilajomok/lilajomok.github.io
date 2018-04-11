@@ -49,3 +49,7 @@ Gemfile.lock
 _config.dev.yml
 .vscode
 *.gem
+
+\.vs/lilajomok\.github\.io/v15/
+
+\.vs/
