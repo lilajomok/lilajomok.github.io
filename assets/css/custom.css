@@ -157,3 +157,27 @@
   margin: 0 auto;
   padding: 0 2.5em;
 }
+
+/* Disqus CSS */
+#disqus_thread {
+  color: #ffffff;
+  border: 0px solid var(--alt);
+  padding: 5px;
+  }
+  
+  #dsq-content #dsq-comments .dsq-comment-body {
+  color: #fff;
+  background-color: var(--primary);
+  }
+  
+  .dsq-reaction-body {
+  color: #fff;
+  }
+  
+  .dsq-reaction-header cite, .dsq-reaction-header span {
+  color: var(--footer-col);
+  }
+  
+  .dsq-reaction-retweets {
+  color: var(--footer-col);
+  }
