@@ -1,12 +1,12 @@
-<nav id="menu">
+<!-- <nav id="menu">
      <h2>{{ site.data.nav.menu_title}}</h2>
-     <ul>
-        <!-- {% assign mypages = site.pages | sort: "order" %}
+     <ul> -->
+       <!--  {% assign mypages = site.pages | sort: "order" %}
         {% for page in mypages %}
         <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
         {% endfor %} -->
 
-        {% for item in site.data.nav.links %}
+<!--         {% for item in site.data.nav.links %}
             <li><a href="{{ item.url | absolute_url }}" alt="{{ item.title }}">{{ item.title }}</a>
                 {% if item.subfolderitems[0] %}
                 <ul>
@@ -17,11 +17,66 @@
                 {% endif %}
             </li>
             
-        {% endfor %}
+        {% endfor %} -->
     </ul>
 </nav>
-    
 
-{% for entry in item.subfolderitems %}
+<!-- {% for entry in item.subfolderitems %}
     <li><a href="{{ entry.url }}">{{ entry.page }}</a></li>
-{% endfor %}
+{% endfor %} -->
+
+<!--Main Navigation-->
+<header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="/" target="_blank">
+                <strong class="blue-text">{{ site.data.nav.menu_title}}</strong>
+            </a>
+
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    {% assign mypages = site.pages | sort: "order" %}
+                    {% for page in mypages %}
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="{{ page.url | absolute_url }}">{{ page.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="https://github.com/{{ site.gh }}" class="nav-link waves-effect" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://twitter.com/{{ site.twitter }}" class="nav-link waves-effect" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+</header>
+<!--Main Navigation-->
