@@ -3,25 +3,34 @@ layout: default
 comments: true
 ---
 
-<header>
-    <strong class="post-title">{{ page.title }}</strong>
-    <h4 class="post-list">
-        {{ page.date | date: '%-B %-d, %Y'}}
-        {% if page.categories.size > 0%}&middot; {% endif %}
-        {% for tag in page.tags %}
-            <a href="{{ site.baseurl }}/blog/tag#{{tag}}">{{ tag }}</a>
-            {% unless forloop.last %},{% endunless %}  
-        {% endfor %}
-        {% if page.comments %}&middot; <a href="{{ page.url }}#disqus_thread">Comments</a> {% endif %}
-    </h4>
-</header>
 {% if page.image %}
-<span class="image fit">
-    <img src="{{ page.image }}" alt="{{ page.title }}" title="{{ page.title }}">
-</span>
-{% endif%}
-{{ content }}
+<section class="card card-image night-fade-gradient wow fadeIn" id="intro" style="background-image: url('{{ page.image }}');">
+{% else %}
+<section class="jumbotron card night-fade-gradient wow fadeIn" id="intro">
+{% endif %}
+    <!-- Content -->
+    <div class="rgba-black-strong py-5 px-4">
+        <div class="card-body text-white text-center py-5 px-5 my-5">
 
+            <h1 class="display-4 mb-4">
+                <strong>{{ page.title }}</strong>
+            </h1>
+            <p class="mx-5 mb-5">
+                {{ page.date | date: '%-B %-d, %Y'}}
+                {% if page.categories.size > 0%}&middot; {% endif %}
+                {% for tag in page.tags %}
+                    <a class="badge badge-pill badge-dark" href="{{ site.baseurl }}/blog/tag#{{tag}}">{{ tag }}</a>
+                    {% unless forloop.last %} {% endunless %}  
+                {% endfor %}
+                {% if page.comments %}&middot; <a class="badge badge-pill badge-light" href="{{ page.url }}#disqus_thread">Comments</a> {% endif %}
+            </p>
+        </div>
+    </div>
+    <!-- Content -->
+</section>
+<br>
+{{ content }}
+<hr class="my-5">
 <!-- Comments -->
 {% if page.comments %}
     {% include disqus.html %}

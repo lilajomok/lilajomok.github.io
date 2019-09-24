@@ -1,41 +1,11 @@
-<!-- <nav id="menu">
-     <h2>{{ site.data.nav.menu_title}}</h2>
-     <ul> -->
-       <!--  {% assign mypages = site.pages | sort: "order" %}
-        {% for page in mypages %}
-        <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
-        {% endfor %} -->
-
-<!--         {% for item in site.data.nav.links %}
-            <li><a href="{{ item.url | absolute_url }}" alt="{{ item.title }}">{{ item.title }}</a>
-                {% if item.subfolderitems[0] %}
-                <ul>
-                    {% for entry in item.subfolderitems %}
-                    <li><a href="{{ entry.url }}">{{ entry.page }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </li>
-            
-        {% endfor %} -->
-    </ul>
-</nav>
-
-<!-- {% for entry in item.subfolderitems %}
-    <li><a href="{{ entry.url }}">{{ entry.page }}</a></li>
-{% endfor %} -->
-
 <!--Main Navigation-->
 <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark grey darken-4 scrolling-navbar">
         <div class="container">
-
-            <!-- Brand -->
-            <a class="navbar-brand waves-effect" href="/" target="_blank">
-                <strong class="blue-text">{{ site.data.nav.menu_title}}</strong>
-            </a>
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="/">{{ site.title }}</a>
 
             <!-- Collapse -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -45,15 +15,32 @@
 
             <!-- Links -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <!-- Left -->
-                <ul class="navbar-nav mr-auto">
-                    {% assign mypages = site.pages | sort: "order" %}
-                    {% for page in mypages %}
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect" href="{{ page.url | absolute_url }}">{{ page.title }}
-                        </a>
-                    </li>
+                <ul class="navbar-nav ml-auto">
+                    
+                    {% assign links = site.data.nav %}
+                    {% for link in links %}
+                        {% assign class = nil %}
+                        {% if page.url contains link.url %}
+                            {% assign class = 'active' %}
+                        {% endif %}
+                        {% if link.sublinks %}
+                            <li class="nav-item dropdown">
+                                <a href="{{ site.url }}{{ site.baseurl }}{{ link.url }}" class="nav-link dropdown-toggle w-100" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="navbarDropdownMenuLink" aria-labelledby="navbarDropdownMenuLink">
+                                    {{ link.title }} 
+                                </a>
+                                <ul class="dropdown-menu ml-2 rounded-0 grey darken-4 border-0 z-depth-1">
+                                    {% for sublink in link.sublinks %}
+                                    <li class="dropdown-item p-0">
+                                        <a class="text-white w-100" href="{{ site.url }}{{ site.baseurl }}{{ sublink.url }}">{{ sublink.page }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ site.url }}{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
 
