@@ -1,5 +1,5 @@
 ---
-layout:     page
+layout:     post
 title:      "Quick Update"
 subtitle:   "A short update regarding this site."
 date:       2017-10-31

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: "Predicting Future Blood Donations in R"
 categories: Projects
 tags: [R, logistic regression]
@@ -32,14 +32,11 @@ The provided datasets, `trainingData.csv` and `testData.csv` contain the followi
 
 We can view the first couple of observations of the datasets below:
 
-``` r
+{% highlight r linenos %}
 # Set working directory and load packages
 getwd()
-```
-
     ## [1] "/home/lila/Documents/Projects/blood-donations"
 
-``` r
 library(tidyverse)
 library(gridExtra)
 library(aod)
@@ -51,8 +48,6 @@ trainingData = read.csv("data/trainingData.csv", header = TRUE)
 
 # Display first rows of datasets
 head(trainingData)
-```
-
     ##     X Months.since.Last.Donation Number.of.Donations
     ## 1 619                          2                  50
     ## 2 664                          0                  13
@@ -75,10 +70,7 @@ head(trainingData)
     ## 5                           0
     ## 6                           0
 
-``` r
 head(testData)
-```
-
     ##     X Months.since.Last.Donation Number.of.Donations
     ## 1 659                          2                  12
     ## 2 276                         21                   7
@@ -93,6 +85,7 @@ head(testData)
     ## 4                        2750                          38
     ## 5                        3000                          34
     ## 6                        5250                          42
+{% endhighlight %}
 
 Since `testData` is our testing data set, it does not have `Made Donation in March 2007` variable.
 
@@ -101,15 +94,13 @@ Renaming Variables
 
 To make the data analysis more simple, we will rename the variables using `colnames()`:
 
-``` r
+{% highlight r linenos %}
 # Rename variables in testData and trainingData
 colnames(testData) <- c("ID", "mosLastDo", "numDonations", "totVol", "mosFirstDo")
 colnames(trainingData) <- c("ID", "mosLastDo", "numDonations", "totVol", "mosFirstDo", "madeDonation")
 
 # Display first rows of datasets (to confirm name changes)
 head(trainingData)
-```
-
     ##    ID mosLastDo numDonations totVol mosFirstDo madeDonation
     ## 1 619         2           50  12500         98            1
     ## 2 664         0           13   3250         28            1
@@ -118,10 +109,7 @@ head(trainingData)
     ## 5 358         1           24   6000         77            0
     ## 6 335         4            4   1000          4            0
 
-``` r
 head(testData)
-```
-
     ##    ID mosLastDo numDonations totVol mosFirstDo
     ## 1 659         2           12   3000         52
     ## 2 276        21            7   1750         38
@@ -129,34 +117,31 @@ head(testData)
     ## 4 303        11           11   2750         38
     ## 5  83         4           12   3000         34
     ## 6 500         3           21   5250         42
+{% endhighlight %}
 
 Since the explanatory variable `madeDonation` results in two outcomes (either the donor donates in March 2007 or not), we consider building a **logistic regression model** for our data. However, before we proceed to building the model, we'll perform some EDA (Exploratory Data Analysis) to find more about our data.
+
+---
 
 Exploratory Data Analysis
 =========================
 
 First, we need to make the binary factor `madeDonation` is read as a categorical variable. Otherwise, the `0` and `1` values will be read as continuous variables instead of two groups.
 
-``` r
+{% highlight r linenos %}
 # Turn madeDonation into factors instead of continuous
 trainingData$madeDonation <- factor(trainingData$madeDonation)
 contrasts(trainingData$madeDonation)
-```
-
     ##   1
     ## 0 0
     ## 1 1
-
-``` r
-# trainingData$ID <- factor(trainingData$ID)
-```
+trainingData$ID <- factor(trainingData$ID)
+{% endhighlight %}
 
 Summary of `trainingData`:
 
-``` r
+{% highlight r linenos %}
 summary(trainingData)
-```
-
     ##        ID          mosLastDo       numDonations        totVol     
     ##  Min.   :  0.0   Min.   : 0.000   Min.   : 1.000   Min.   :  250  
     ##  1st Qu.:183.8   1st Qu.: 2.000   1st Qu.: 2.000   1st Qu.:  500  
@@ -171,36 +156,38 @@ summary(trainingData)
     ##  Mean   :34.05               
     ##  3rd Qu.:49.25               
     ##  Max.   :98.00
+{% endhighlight %}
 
 Boxplots
 --------
 
 We plot Boxplots of the two groups to see if there are any patterns:
 
-``` r
+{% highlight r linenos %}
 # Boxplots
 plot01 <- ggplot(data = trainingData) + geom_boxplot(aes(x = madeDonation, y = numDonations)) + labs(title = "Number of Donations", subtitle = "Made Donations vs. No Donations")
 plot02 <- ggplot(data = trainingData) + geom_boxplot(aes(x = madeDonation, y = totVol)) + labs(title = "Total Volume Donated", subtitle = "Made Donations vs. No Donations")
 plot03 <- ggplot(data = trainingData) + geom_boxplot(aes(x = madeDonation, y = mosLastDo)) + labs(title = "Months since Last Donation", subtitle = "Made Donations vs. No Donations")
 plot04 <- ggplot(data = trainingData) + geom_boxplot(aes(x = madeDonation, y = mosFirstDo)) + labs(title = "Months since First Donation", subtitle = "Made Donations vs. No Donations")
 grid.arrange(plot01, plot02, plot03, plot04, ncol = 2)
-```
+{% endhighlight %}
 
 ![]({{ page.img }}/unnamed-chunk-5-1.png) `numDonations` and `totVol` look similar, which makes sense - the total amount of blood donated *should* increase as the number of donations increase. We can see this by looking at their correlation:
 
-``` r
+{% highlight r linenos %}
 TDselect <- select(trainingData, mosLastDo, numDonations, totVol, mosFirstDo)
 cor1 <- round(cor(TDselect), 2)
 cor1
-```
-
     ##              mosLastDo numDonations totVol mosFirstDo
     ## mosLastDo         1.00        -0.16  -0.16       0.19
     ## numDonations     -0.16         1.00   1.00       0.62
     ## totVol           -0.16         1.00   1.00       0.62
     ## mosFirstDo        0.19         0.62   0.62       1.00
+{% endhighlight %}
 
 Both `numDonations` and `totVol` have a correlation of `1.00`. Hence, we can leave out `totVol` in the model.
+
+---
 
 Feature Engineering
 -------------------
@@ -209,13 +196,11 @@ If we create a new variable that takes the average of each donation (`totVol` / 
 
 Some donors have the same values for `mosFirstDo` and `mosLastDo`, indicating that they are first-time donors. We can create a new binary variable `firstTime` to indicate first-time donors and see if there is a significant effect.
 
-``` r
+{% highlight r linenos %}
 TD2 <- mutate(trainingData, donFreq = (mosFirstDo - mosLastDo) / numDonations)
 TD2 <- mutate(TD2, firstTime = ifelse(mosFirstDo == mosLastDo, "0", "1"))
 TD2$firstTime <- factor(TD2$firstTime) # turn into factors
 head(TD2)
-```
-
     ##    ID mosLastDo numDonations totVol mosFirstDo madeDonation  donFreq
     ## 1 619         2           50  12500         98            1 1.920000
     ## 2 664         0           13   3250         28            1 2.153846
@@ -230,17 +215,18 @@ head(TD2)
     ## 4         1
     ## 5         1
     ## 6         0
+{% endhighlight %}
+
+---
 
 Logistic Regression Analysis
 ============================
 
 We will consider a simple logistic linear model for our data.
 
-``` r
+{% highlight r linenos %}
 model01 <- glm(madeDonation ~ mosLastDo + numDonations + mosFirstDo + donFreq + firstTime, family = binomial(link = 'logit'), data = TD2)
 summary(model01)
-```
-
     ##
     ## Call:
     ## glm(formula = madeDonation ~ mosLastDo + numDonations + mosFirstDo +
@@ -268,6 +254,7 @@ summary(model01)
     ## AIC: 556.29
     ##
     ## Number of Fisher Scoring iterations: 5
+{% endhighlight %}
 
 At the significance level of alpha = 0.05, `mosLastDo` and `firstTime` are statistically significant.
 
@@ -279,15 +266,14 @@ Wald test for `firstTime`
 
 We will perform a Wald test the overall effectiveness of `firstTime`.
 
-``` r
+{% highlight r linenos %}
 wald.test(b = coef(model01), Sigma = vcov(model01), Terms = 5)
-```
-
     ## Wald test:
     ## ----------
     ##
     ## Chi-squared test:
     ## X2 = 2.7, df = 1, P(> X2) = 0.098
+{% endhighlight %}
 
 The chi-squared statistic of `2.7` with `1` degrees of freedom and a p-value of `0.098` indicates that the overall effect of `firstTime` is statistically insignificant.
 
@@ -296,10 +282,8 @@ Odds Ratios
 
 We can obtain the odds-ratio and 95% CI from the coefficients:
 
-``` r
+{% highlight r linenos %}
 exp(cbind(OR = coef(model01), confint(model01)))
-```
-
     ## Waiting for profiling to be done...
 
     ##                     OR     2.5 %    97.5 %
@@ -309,20 +293,21 @@ exp(cbind(OR = coef(model01), confint(model01)))
     ## mosFirstDo   0.9897842 0.9671976 1.0123875
     ## donFreq      0.8997038 0.7857770 1.0095484
     ## firstTime1   3.6427465 1.7525382 7.8386961
+{% endhighlight %}
 
 For a unit increase in `mosLastDo`, the odds of donating in March 2007 increases by `0.9074839`.
+
+---
 
 Goodness of Fit
 ===============
 
 Before we can start predicting with our model, we will test the Full and Reduced models with a Likelihood Ratio Test.
 
-``` r
+{% highlight r linenos %}
 # Create reduced model
 model02 <- glm(madeDonation ~ mosLastDo + firstTime, family = binomial(link = 'logit'), data = TD2)
 summary(model02)
-```
-
     ##
     ## Call:
     ## glm(formula = madeDonation ~ mosLastDo + firstTime, family = binomial(link = "logit"),
@@ -348,11 +333,8 @@ summary(model02)
     ##
     ## Number of Fisher Scoring iterations: 5
 
-``` r
 # Likelihood Ratio test bt. Full and Reduced
 anova(model01, model02, test = "LRT")
-```
-
     ## Analysis of Deviance Table
     ##
     ## Model 1: madeDonation ~ mosLastDo + numDonations + mosFirstDo + donFreq +
@@ -363,21 +345,22 @@ anova(model01, model02, test = "LRT")
     ## 2       573     573.01 -3  -28.716 2.569e-06 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+{% endhighlight %}
 
 A p-value of `2.569e-06` indicates that the full model is a better fit than the reduced model. Compared to the reduced model, the full model's AIC is slightly lower (`556.29` to `579.01`).
+
+---
 
 Predictions
 ===========
 
 Before we can start predicting, we need to adjust `testData` with the same variables as `trainingData`.
 
-``` r
+{% highlight r linenos %}
 testData2 <- mutate(testData, donFreq = (mosFirstDo - mosLastDo) / numDonations)
 testData2 <- mutate(testData2, firstTime = ifelse(mosFirstDo == mosLastDo, "0", "1"))
 testData2$firstTime <- factor(testData2$firstTime)
 head(testData2)
-```
-
     ##    ID mosLastDo numDonations totVol mosFirstDo  donFreq firstTime
     ## 1 659         2           12   3000         52 4.166667         1
     ## 2 276        21            7   1750         38 2.428571         1
@@ -385,17 +368,15 @@ head(testData2)
     ## 4 303        11           11   2750         38 2.454545         1
     ## 5  83         4           12   3000         34 2.500000         1
     ## 6 500         3           21   5250         42 1.857143         1
+{% endhighlight %}
 
 We will create a new data frame `newDF` to store our predicted probabilities in a new column `donateP`.
 
-``` r
+{% highlight r linenos %}
 # Create a base DF to be used in predictions
 newDF <- with(testData2, data.frame(ID = ID, mosLastDo = mosLastDo, numDonations = numDonations,  mosFirstDo = mosFirstDo, donFreq = donFreq, firstTime = factor(firstTime)))
-
 newDF$donateP <- predict(model01, newdata = newDF, type="response")
 head(newDF)
-```
-
     ##    ID mosLastDo numDonations mosFirstDo  donFreq firstTime   donateP
     ## 1 659         2           12         52 4.166667         1 0.4688002
     ## 2 276        21            7         38 2.428571         1 0.1206789
@@ -403,22 +384,20 @@ head(newDF)
     ## 4 303        11           11         38 2.454545         1 0.3223996
     ## 5  83         4           12         34 2.500000         1 0.5104633
     ## 6 500         3           21         42 1.857143         1 0.6778565
+{% endhighlight %}
 
 Submission
 ----------
 
 After predictions, we will then use `select()` from the `dplyr` package to create another data frame for our submission, which only includes the donor's `ID` and the predicted probability. The columns in `submissionData` are then renamed to the proper names for the submission format.
 
-``` r
+{% highlight r linenos %}
 submissionData <- select(newDF, ID, donateP)
 colnames(submissionData) = c("X1", "Made Donation in March 2007") # rename columns to submission format
 
 # Save submissionData as CSV format
 write.csv(submissionData, file = "submissionData.csv", row.names = FALSE)
-
 head(submissionData)
-```
-
     ##    X1 Made Donation in March 2007
     ## 1 659                   0.4688002
     ## 2 276                   0.1206789
@@ -426,8 +405,11 @@ head(submissionData)
     ## 4 303                   0.3223996
     ## 5  83                   0.5104633
     ## 6 500                   0.6778565
+{% endhighlight %}
 
 With our submission file created and exported, we are about done! All that is left is to submit it!
+
+---
 
 Future Updates
 ==============
