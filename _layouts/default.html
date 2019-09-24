@@ -1,42 +1,43 @@
-<!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	{% include head.html %}
-	<body>
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Header -->
-					{% include header.html %}
+<body>
+	<!-- Header -->
+	{% include header.html %}
 
-				<!-- Menu -->
-					{% include nav.html %}
+	<!-- Menu -->
+	{% include nav.html %}
 
-				<!-- Main -->
-					{% include main.html %}
+	<!-- Main -->
+	{% include main.html %}
 
-				<!-- Footer -->
-					{% include footer.html %}
+	<!-- Footer -->
+	{% include footer.html %}
 
-			</div>
+	<!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{site.baseurl}}/assets/js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{site.baseurl}}/assets/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{site.baseurl}}/assets/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{site.baseurl}}/assets/js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+		
+	<!-- Disqus Comment count -->
+	<script id="dsq-count-scr" src="https://" + {{ site.disqus.shortname }} + "disqus.com/count.js" async></script>
 
-		<!-- Scripts -->
-			<script src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
-			<script src="{{site.baseurl}}/assets/js/skel.min.js"></script>
-			<script src="{{site.baseurl}}/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="{{site.baseurl}}/assets/js/main.js"></script>
-			
-			<!-- Disqus Comment count -->
-			<script id="dsq-count-scr" src="https://" + {{ site.disqus.shortname }} + "disqus.com/count.js" async></script>
+	<!-- Google Analytics ID -->
+	{% if site.google_analytics_ID %}
+		{% include googleAnalytics.html %}
+	{% endif %}
 
-			{% if site.google_analytics_ID %}
-				{% include googleAnalytics.html %}
-			{% endif %}
+</body>
 
-	</body>
 </html>

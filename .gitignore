@@ -53,3 +53,7 @@ _config.dev.yml
 \.vs/lilajomok\.github\.io/v15/
 
 \.vs/
+
+.jekyll-cache/
+
+HTML5 UP/

@@ -1,15 +1,10 @@
-menu_title: Menu
-links:
-
-- title: Home
-  url: /
-
 - title: About
   url: /about
-
 - title: Blog
   url: /blog
-  subfolderitems:
+  sublinks:
+    - page: Posts
+      url: /blog
     - page: Archive
       url: /blog/archive
     - page: Tags

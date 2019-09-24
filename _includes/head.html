@@ -2,7 +2,6 @@
     <title>
         {{ page.title }} | {{ site.title }}
     </title>
-    <meta charset="utf-8" />
 
     <!-- Meta -->
     {% include meta.html %}
@@ -10,15 +9,14 @@
     <!-- Favicon -->
     {% include favicons.html %}
 
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- CSS links -->
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
-    <link rel="stylesheet" href=  "{{site.baseurl}}/assets/css/main.css" />
-    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/custom.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{site.baseurl}}/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{site.baseurl}}/assets/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{{site.baseurl}}/assets/css/style.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/custom.css">
 </head>

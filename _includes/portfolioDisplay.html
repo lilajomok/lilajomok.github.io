@@ -1,51 +1,47 @@
-<!-- {% for item in site.data.portfolio.sections %}
-<section class="special">
-    <h2>{{ item.category }}</h2>
+<section class="pt-0">
+    <!-- Heading & Description -->
+    <div class="wow fadeIn">
+        <!--Section heading-->
+        <h2 class="h1 text-center mb-5">Projects</h2>
+    </div>
+    <!-- Heading & Description -->
 </section>
-<section class="tiles special">
-    {% for entry in item.projects %}
-    <article class="{{ entry.style }}">
-        <span class="image">
-            <img src="{{ entry.img}}" alt="" />
-        </span>
-        <a href="{{ entry.url }}">
-            <h2>{{ entry.title }}</h2>
-            <div class="content">
-                <p>{{ entry.description }}.</p>
-            </div>
-        </a>
-    </article>
-    {% endfor %}
-</section>
-{% endfor %} -->
 
 <!-- Lists (Alternative to Tiles) -->
-<section>
-    {% for item in site.data.portfolio.sections %}
-    <h2>{{ item.category }}</h2>
-    {% for entry in item.projects %}
-    <div class="row">
-        <div class="3u uniform">
-            {% if entry.img %}
-            <span class="image fit">
-                <img src="{{ entry.img }}" alt="{{ entry.title }}">
-            </span>
-            {% endif %}
-        </div>
-            <div class="9u uniform">
-                <ul class="alt">
-            <li>
-                <a href="{{ entry.url }}">
-                    <strong class="post-title">{{ entry.title }}</strong>
+<hr class="mb-5">
+{% for item in site.data.portfolio.sections %}
+<h3 class="h3 text-center mb-5">{{ item.category }}</h3>
+<div class="row justify-content-center">
+{% for entry in item.projects %}
+    <div class="col-lg-4">
+        <div class="card wow fadeIn card-cascade wider" data-wow-delay="0.2s">
+            <div class="view view-cascade overlay">
+                <img  class="card-img-top" src="{{ entry.img }}" alt="Card image cap">
+            </div>
+
+            <!--Card content-->
+            <div class="card-body card-body-cascade text-center">
+                <!--Title-->
+                <h4 class="card-title">{{ entry.title }}</h4>
+                <!--Text-->
+                <p class="card-text">{{ entry.description }}</p>
+                <!-- Button -->
+                <a href="{{ entry.url }}" class="btn btn-md purple darken-4 text-white">
+                    Read More
                 </a>
-                <p>{{ entry.description }}</p>
+        
                 {% if entry.gh-repo %}
-                    <a href="{{ entry.gh-repo }}" class="button small"><strong>Github</strong></a>
-                {% endif %}
-            </li>
-            </ul>
+                <a href="{{ entry.gh-repo }}" target="_blank" class="btn btn-md purple darken-4 text-white">
+                    <i class="fab fa-github"></i>
+                    Github
+                </a>
+            {% endif %}
+            </div>
         </div>
     </div>
-    {% endfor %}
-    {% endfor %}
-</section>
+{% endfor %}
+</div>
+{% endfor %}
+
+
+

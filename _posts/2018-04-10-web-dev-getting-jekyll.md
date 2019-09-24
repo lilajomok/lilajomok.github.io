@@ -14,4 +14,4 @@ Recently I started getting to web development. While I'm no expert yet, it's bee
 
 It took me about a week to reach the halfway point, and hopefully soon I'll continue the back end portion of the course. I decided to take a short break and update this site in the mean time. Instead of downloading a ready-to-use Jekyll template, I took a template and added Jekyll components. Whew! It took a while for me to figure out how to utilize YAML and liquid tags, but after a couple of days, I was able to get the site functioning again. 
 
-The new theme is from HTML5 Up! - [Phantom](https://html5up.net/phantom). I might add some more things to the site in the near future, but the current website is good enough for me. Now time to work on some new projects! I'm thinking of trying out the Python libraries for a couple projects; I haven't used them
+The new theme is from HTML5 Up! - [Phantom](https://html5up.net/phantom). I might add some more things to the site in the near future, but the current website is good enough for me. Now time to work on some new projects! I'm thinking of trying out the Python libraries for a couple projects; I haven't used them.

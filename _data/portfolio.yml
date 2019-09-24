@@ -5,14 +5,14 @@ sections:
     url: /blog/2017-11-16/blood-donations-data-analysis
     gh-repo: https://github.com/lilajomok/blood-donations
     description: Given a dataset of blood donors, we predict which donors are most likely to donate blood at an upcoming blood drive.
-    img: /images/blog-img/blood-donations.png
+    img: /images/blog-img/blood-drive.jpg
     style: style1
 
   - title: Time Series Analysis of RTA Boardings, Route 16 (2008-2015)
     url: /blog/2016-11-20/rta-routes
     gh-repo: https://github.com/lilajomok/rta-routes
     description: Predict the amount of riders taking Route 16.
-    img: /images/blog-img/rta-bus.jpg
+    img: /images/blog-img/bus-routes.jpg
     style: style2
 
 

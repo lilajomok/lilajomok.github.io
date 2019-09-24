@@ -1,183 +1,38 @@
-@import url(main.css);
+@import "monokai.css";
+/* @import "fruity.css"; */
 
-/* Blog Posts */
 
-
-.custom {
-	margin-bottom: 0.5em;
+#post-container {
+    max-width: 768px;
 }
 
-.post-title {
-  font-size: 1.5em;
+#post-header h1,h2,h3,h4,h5,h6 {
+    line-height: 2.0;
+    font-weight: 900;
 }
 
-.post-list {
-	font-size: 0.75em;
-	margin: 0 0 2em 0;
-	text-transform: uppercase;
+#post-body {
+    font-size: 20px;
+    line-height: 2.0;
+    text-align: left;
+    margin-bottom: 25px;
 }
 
-.post-tags {
-	font-weight: 700;
-	font-size: 0.75em;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
+#post-body a {
+    color: #4a148c;
+    font-weight: 500;
 }
 
-.list-item {
-	font-size: 1.1em;
-	text-transform: none;
-	font-weight: 700;
+#post-body a:hover {
+    text-decoration: underline;
+    text-decoration-color: #4a148c;
 }
 
-.date {
-	font-weight: 400;
-	font-size: .8em;
-	letter-spacing: 0;
-	margin: 0 0 0 0.25em;
+#post-body h1,h2,h3,h4,h5,h6 {
+    line-height: 2.0;
+    font-weight: 500;
 }
 
-/* Nav buttons to Font Awesome */
-#header nav ul li a[href="#menu"] {
-  position: relative;
+#post-tags {
+    font-size: 20px;
 }
-
-#header nav ul li a[href="#menu"]:before {
-  background: none;
-  content: "\f0c9";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2em;
-  text-decoration: inherit;
-  left: -1.1em;
-  top: 0;
-	opacity: 0;
-}
-
-#header nav ul li a[href="#menu"]:after {
-	background: none;
-  content: "\f0c9";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2em;
-  text-decoration: inherit;
-  left: -1.1em;
-  top: 0;
-	opacity: 1;
-}
-
-#header nav ul li a[href="#menu"]:hover:before {
-	opacity: 1;
-}
-
-#header nav ul li a[href="#menu"]:hover:after {
-	opacity: 1;
-}
-
-#menu > .close {
-  position: relative;
-}
-
-#menu > .close:before {
-  background: none;
-  content: "\f00d";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2em;
-  text-decoration: inherit;
-  left: -1.1em;
-  top: 0;
-	opacity: 0;
-}
-
-#menu > .close:after {
-	background: none;
-  content: "\f00d";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2em;
-  text-decoration: inherit;
-  left: -1.1em;
-  top: 0;
-	opacity: 1;
-}
-
-#menu > .close:hover:before {
-	opacity: 1;
-}
-
-#menu > .close:hover:after {
-	opacity: 0;
-}
-
-/* Nav secondary lists */
-
-#menu > .inner > ul ul {
-  list-style: none;
-  font-size: 85%;
-  line-height: 85%;
-  padding: 0;
-  margin: -1em 0 0 1.2em;
-}
-
-#menu > .inner > ul ul > li {
-  padding: 0;
-}
-
-#menu > .inner > ul ul > li a {
-  display: block;
-  padding: .75em 0;
-  border: 0;
-  color: inherit;
-}
-
-/* Footer */
-#footer {
-  background: var(--primary);
-  color: white;
-}
-
-#footer > .inner section:nth-child(1) {
-  width: 100%;
-  margin-right: 0;
-}
-
-.copyright li {
-  color: white;
-}
-
-/* Wrapper */
-#wrapper > * > .inner {
-  width: 100%;
-  max-width: 60em;
-  margin: 0 auto;
-  padding: 0 2.5em;
-}
-
-/* Disqus CSS */
-#disqus_thread {
-  color: #ffffff;
-  border: 0px solid var(--alt);
-  padding: 5px;
-  }
-  
-  #dsq-content #dsq-comments .dsq-comment-body {
-  color: #fff;
-  background-color: var(--primary);
-  }
-  
-  .dsq-reaction-body {
-  color: #fff;
-  }
-  
-  .dsq-reaction-header cite, .dsq-reaction-header span {
-  color: var(--footer-col);
-  }
-  
-  .dsq-reaction-retweets {
-  color: var(--footer-col);
-  }
